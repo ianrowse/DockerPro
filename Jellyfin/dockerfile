@@ -1,0 +1,23 @@
+version: "2"
+
+volumes:
+  portainer-data:
+
+services:
+
+  portainer:
+    image: portainer/portainer:latest
+    container_name: base-portainer
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    restart: always
+
+  netdata:
+    image: netdata/netdata:latest
+    container_name: base-netdata
+    ports:
+      - 19999:19999
+    restart: always        
