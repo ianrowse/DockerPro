@@ -1,0 +1,17 @@
+version: "2"
+services:
+  couchpotato:
+    image: linuxserver/couchpotato:version-7260c12f
+    container_name: couchpotato
+    restart: unless-stopped
+    environment:
+      - UMASK_SET=022 # for umask setting of couchpotato, optional , default if left unset is 022
+      - TZ=Europe/London # Specify a timezone to use EG Europe/London
+      - PUID=1000 # for UserID
+      - PGID=1000 # for GroupID
+    volumes:
+      - /media/linux/Elemets2/movies:/movies # Movie Share.
+      - /media/linux/Elemets2/downloads:/downloads # Downloads Folder.
+      - /media/linux/Elemets2/cp_config:/config # Couchpotato Application Data.
+    ports:
+      - 5050:5050/tcp # HTTP gui
