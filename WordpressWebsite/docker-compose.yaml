@@ -1,0 +1,19 @@
+version: "3"
+
+services: 
+  #database
+  db:
+    image: mysql:8
+    volumes: 
+      - db_data:/var/lib/mysql
+      restart: always
+      environment: 
+        MYSQL_ROOT_PASSWORD: password 
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: wordpress
+        MYSQL_PASSWORD: wordpress
+      networks: 
+        - wpsite
+  wordpress:        
+    depends_on:
+     - db
