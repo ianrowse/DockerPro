@@ -1,1 +1,0 @@
-sudo docker run -d --name torrentmonitor --restart=always -p 6000:80 -v /media/pi/Elements/torrents:/data/htdocs/torrents -v /media/pi/Elements/torrents/db:/data/htdocs/db nawa/armhf-torrentmonitor
